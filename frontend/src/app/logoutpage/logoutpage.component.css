@@ -1,0 +1,28 @@
+/* General Logout Page Styles */
+.logout-page {
+    background-image: url('https://m.media-amazon.com/images/I/811go9afNjL.jpg'); /* Replace with the doughnuts and cookies image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #4e342e; /* Warm brown for text */
+    font-family: 'Lora', serif;
+    padding: 20px;
+    box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.8); /* Soft overlay for readability */
+  }
+  
+  .logout-message {
+    background: rgba(255, 243, 230, 0.9); /* Light peach background for text */
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.5;
+    color: #e65100; /* Deep orange text */
+  }
+  

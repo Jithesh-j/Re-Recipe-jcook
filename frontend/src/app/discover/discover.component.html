@@ -1,0 +1,80 @@
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
+<div class="container my-4">
+  <!-- Search Bar -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search recipes..."
+        [(ngModel)]="searchQuery"
+      />
+    </div>
+    <div class="col-md-4">
+      <select class="form-select" [(ngModel)]="selectedCategory">
+        <option value="">All Categories</option>
+        <option *ngFor="let category of uniqueCategories" [value]="category">
+          {{ category }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Recipe Cards -->
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let recipe of filteredRecipes()">
+      <div class="card recipe-card">
+        <!-- Toggle Checkbox -->
+        <input
+          type="checkbox"
+          class="top-right-checkbox form-check-input"
+          [checked]="selectedRecipes.has(recipe.recipe_ID)"
+          (change)="toggleRecipeSelection(recipe.recipe_ID)"
+        />
+
+        <!-- Clickable Link Wrapper -->
+        <a
+          [routerLink]="['/discover', recipe.recipe_ID]"
+          class="stretched-link text-decoration-none"
+        >
+          <!-- Image Section -->
+          <img
+            [src]="recipe.image_url || 'assets/images/placeholder.png'"
+            class="card-img-top"
+            alt="{{ recipe.recipe_name }}"
+          />
+        </a>
+
+        <!-- Card Body -->
+        <div class="card-body">
+          <!-- Recipe Title -->
+          <h5 class="card-title">{{ recipe.recipe_name }}</h5>
+
+          <!-- Hardcoded Heart Ratings TBD -->
+          <div class="stars" aria-label="Hardcoded star rating">★★★★★</div>
+
+          <!-- Category -->
+          <p class="card-text text-muted">
+            <strong>Category:</strong> {{ recipe.meal_category[0] || 'N/A' }}
+          </p>
+          <p class="card-text text-muted">
+            <strong>Cooking Time:</strong>
+            {{ recipe.recipe_versions[0].cooking_duration}} minutes
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    class="fab btn btn-primary"
+    [disabled]="selectedRecipes.size === 0"
+    (click)="saveSelectedRecipes()"
+    aria-label="Save Selected Recipes"
+    title="Click to save selected recipes"
+  >
+    <span class="material-symbols-outlined">add</span>
+  </button>
+</div>

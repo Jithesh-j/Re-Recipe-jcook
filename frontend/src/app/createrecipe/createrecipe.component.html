@@ -1,0 +1,135 @@
+<div class="create-recipe-container">
+  <h1>Create Recipe</h1>
+  <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <!-- Recipe Name -->
+    <div class="form-group">
+      <label for="recipe_name">Recipe Name</label>
+      <input id="recipe_name" type="text" formControlName="recipe_name" placeholder="Enter recipe name" />
+      <div *ngIf="recipeForm.get('recipe_name')?.invalid && recipeForm.get('recipe_name')?.touched">
+        Recipe name is required.
+      </div>
+    </div>
+
+    <!-- Category -->
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select id="category" formControlName="category">
+        <option value="" disabled>Select a category</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+
+    <!-- Cooking Duration -->
+    <div class="form-group">
+      <label for="cooking_duration">Cooking Duration (minutes)</label>
+      <input
+        id="cooking_duration"
+        type="number"
+        formControlName="cooking_duration"
+        placeholder="Enter cooking duration"
+        step="1"
+        oninput="this.value = Math.floor(this.value) || ''"
+      />
+      <div *ngIf="recipeForm.get('cooking_duration')?.invalid && recipeForm.get('cooking_duration')?.touched">
+        <div *ngIf="recipeForm.get('cooking_duration')?.errors?.['required']">
+          Cooking duration is required.
+        </div>
+        <div *ngIf="recipeForm.get('cooking_duration')?.errors?.['min']">
+          Cooking duration must be at least 1 minute.
+        </div>
+      </div>
+    </div>
+
+    <!-- Serving Size -->
+    <div class="form-group">
+      <label for="serving_size">Serving Size</label>
+      <input
+        id="serving_size"
+        type="number"
+        formControlName="serving_size"
+        placeholder="Enter serving size"
+        step="1"
+        oninput="this.value = Math.floor(this.value) || ''"
+      />
+      <div *ngIf="recipeForm.get('serving_size')?.invalid && recipeForm.get('serving_size')?.touched">
+        <div *ngIf="recipeForm.get('serving_size')?.errors?.['required']">
+          Serving size is required.
+        </div>
+        <div *ngIf="recipeForm.get('serving_size')?.errors?.['min']">
+          Serving size must be at least 1.
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Ingredients Section -->
+    <div class="form-group">
+      <label>Ingredients</label>
+      <button type="button" (click)="addIngredient()">Add Ingredient</button>
+      <div formArrayName="ingredients" class="ingredients-grid">
+        <div *ngFor="let ingredient of ingredients.controls; let i = index" [formGroupName]="i" class="ingredient-item">
+          <input formControlName="name" placeholder="Ingredient Name" />
+          <input
+            formControlName="quantity"
+            type="number"
+            placeholder="Quantity"
+            step="0.1"
+          />
+          <select formControlName="unit">
+            <option value="" disabled>Select Unit</option>
+            <option *ngFor="let unit of ['oz', 'cup', 'tbsp', 'tsp', 'g', 'kg', 'lb', 'each']" [value]="unit">
+              {{ unit }}
+            </option>
+          </select>
+          <button type="button" class="remove-ingredient" (click)="removeIngredient(i)">Remove</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Directions Section -->
+    <div class="form-group">
+      <label>Directions</label>
+      <button type="button" (click)="addDirection()">Add Step</button>
+      <div formArrayName="directions" class="directions-grid">
+        <div *ngFor="let direction of directions.controls; let i = index" [formGroupName]="i" class="direction-item">
+          <label class="step-label">Step {{ i + 1 }}</label>
+          <textarea formControlName="step" placeholder="Enter step"></textarea>
+          <button type="button" class="remove-step" (click)="removeDirection(i)">Remove</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Image URL -->
+    <div class="form-group">
+      <label for="image_url">Image URL</label>
+      <input id="image_url" type="text" formControlName="image_url" placeholder="Enter image URL" />
+    </div>
+
+    <!-- Publish Recipe -->
+    <div class="form-group">
+      <label for="is_visible">Publish Recipe</label>
+      <div class="checkbox-container">
+        <input
+          id="is_visible"
+          type="checkbox"
+          formControlName="is_visible"
+        />
+      </div>
+    </div>
+
+    <!-- Submit and Reset -->
+    <div class="form-buttons">
+      <button
+        type="submit"
+        [disabled]="recipeForm.invalid || ingredients.length === 0 || directions.length === 0"
+      >
+        Submit
+      </button>
+      <button type="button" (click)="onReset()">Reset</button>
+    </div>
+  </form>
+</div>
+
+

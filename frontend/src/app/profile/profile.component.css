@@ -1,0 +1,73 @@
+/* General Styles for Profile */
+body {
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  font-family: 'Lora', serif; /* Use a recipe-like font */
+  margin: 0;
+  padding: 0;
+}
+
+.profile-container {
+  background-color: rgba(255, 255, 255, 0.95); /* Light peach with slight transparency */
+  border: 2px solid #e65100; /* Orange border for a warm feel */
+  border-radius: 15px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Deep shadow for depth */
+  padding: 40px;
+  width: 60%;
+  margin: 40px auto;
+
+}
+
+.profile-header {
+  font-family: 'Pacifico', cursive; /* A handwritten font for a cozy, recipe-book feel */
+  font-size: 2.5rem;
+  color: #d84315; /* Warm orange-brown */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-details {
+  font-family: 'Lora', serif;
+  font-size: 1.2rem;
+  color: #4e342e; /* Dark chocolate brown */
+  line-height: 1.8;
+}
+
+.profile-details p {
+  margin: 10px 0;
+}
+
+.login-container {
+  background-color: rgba(246, 243, 237, 0.95); /* Soft yellow for login prompt */
+  border: 2px dashed #ff5722; /* Dashed border to indicate focus */
+  padding: 20px;
+  border-radius: 15px;
+  width: 60%;
+  margin: 40px auto;
+  text-align: center;
+  margin-left: 30%;
+  margin-top:15%;
+  font-size: x-large;
+}
+
+.login-link {
+  color: #e65100;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: 'Pacifico', cursive;
+}
+
+.login-link:hover {
+  color: #ff7043; /* Slightly brighter orange for hover */
+}
+
+/* Additional Enhancements */
+p {
+  margin: 0;
+}
+
+strong {
+  color: #bf360c; /* Highlighted dark orange for text labels */
+}

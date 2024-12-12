@@ -1,0 +1,9 @@
+import { Document } from "mongoose";
+import { MealCategoryEnum } from "../enums/MealCategoryEnum";
+
+/**
+ * Interface for meal categories.
+ */
+export interface IMealCategory extends Document {
+  name: MealCategoryEnum; 
+}

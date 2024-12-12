@@ -1,0 +1,79 @@
+.container {
+  margin-top: 40px;
+}
+
+.recipe-card {
+  width: 100%; /* Ensure card takes full column width */
+  max-width: 320px; /* Limit card width for a narrow appearance */
+  margin: auto; /* Center-align card within the column */
+  border: 1px solid #e9ecef;
+  border-radius: 0; /* Sharp corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recipe-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 25rem; /* Narrower image height for compact look */
+  object-fit: cover; /* Maintain image proportions */
+  object-position: center; /* Center-align image content */
+  border-bottom: 1px solid #e9ecef;
+}
+
+.card-body {
+  padding: 10px;
+  font-family: "Arial", sans-serif;
+  background-color: #fff;
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 8px;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 5px;
+}
+
+.stars {
+  font-size: 0.7rem; /* Adjust the size of the hearts */
+  color: #180103; /* Deep red for hearts */
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.top-right-checkbox {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #007bff;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.top-right-checkbox:hover {
+  background-color: #007bff;
+}
+.form-control {
+  margin-left: 50px;
+}
+.form-select {
+  margin-left: 50px;
+}

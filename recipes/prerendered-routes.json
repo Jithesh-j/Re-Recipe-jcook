@@ -1,0 +1,9 @@
+{
+  "routes": [
+    "/",
+    "/cookbook",
+    "/createrecipe",
+    "/discover",
+    "/home"
+  ]
+}

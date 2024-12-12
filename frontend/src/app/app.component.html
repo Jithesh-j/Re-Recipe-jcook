@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Cookbook</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Page background image */
+    body {
+      background: url('someimage.jpg') no-repeat center center fixed; /* some reason this is needed? Placeholder? */
+      background-size: cover;
+    }
+
+    /* Navbar styles */
+    .navbar {
+      background-color: #000000d1; 
+    }
+
+    /* Navigation link styles */
+    .nav-link {
+      transition: color 0.3s ease, background-color 0.3s ease; 
+    }
+
+    /* Hover effect for nav links */
+    .nav-link:hover {
+      color: #ffffff !important;
+      background-color: rgba(85, 85, 85, 0.8); /* Dark gray hover effect */
+      border-radius: 4px; 
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark">
+    <div class="container">
+      <!-- Logo and Site Name -->
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="https://i.ibb.co/y5tNhjP/ChefRiRi.png" alt="ChefRiRi" width="40" height="40" class="me-2 rounded-circle">
+        Re-Recipe
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link text-light" [routerLink]="['/home']" routerLinkActive="active">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-light" [routerLink]="['/discover']" routerLinkActive="active">Discover</a></li>
+
+        <!-- My Cookbook Link (only visible when logged in) -->
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link text-light" [routerLink]="['/cookbook']" routerLinkActive="active">My Cookbook</a>
+        </li>
+
+        <li class="nav-item"><a class="nav-link text-light" [routerLink]="['/createrecipe']" routerLinkActive="active">Create Recipe</a></li>
+        <li class="nav-item"><a class="nav-link text-light" [routerLink]="['/profile']" routerLinkActive="active">Profile</a></li>
+
+        <!-- Login/Logout Links -->
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link text-light" (click)="login()">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link text-light" [routerLink]="['/logout']" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="footer text-center"></footer>
+
+  <!-- Angular Router Outlet -->
+  <router-outlet></router-outlet>
+</body>
+</html>
